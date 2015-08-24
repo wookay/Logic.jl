@@ -35,8 +35,10 @@ a = Number(5)
 @test eye == identity(Matrix, *)
 @test inv == inverse(Matrix, *)
 
-@test [1 0;0 1] == identity([4 7;2 6], *)
-@test_approx_eq [0.6 -0.7;-0.2 0.4] inverse([4 7;2 6], *)
+A = [4 7; 2 6]
+@test A == A * identity(A, *)
+@test_approx_eq [1 0;0 1] A * inverse(A, *)
+@test [1 0 0; 0 1 0; 0 0 1] == identity([3 2 1; 4 3 2; 4 4 3], *)
 
 
 # logic
