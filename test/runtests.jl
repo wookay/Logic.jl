@@ -5,11 +5,17 @@ using Logic
 using Base.Test
 
 # number
-@test 0 == identity(Number, +)
-@test 0 == identity(Number, -)
-@test 1 == identity(Number, *)
-@test 1 == identity(Number, /)
-@test 1 == identity(Number, \)
+@test zero == identity(Number, +)
+@test zero == identity(Number, -)
+@test one == identity(Number, *)
+@test one == identity(Number, /)
+@test one == identity(Number, \)
+
+@test (-) == inverse(Number, +)
+@test (+) == inverse(Number, -)
+@test :(1/n) == inverse(Number, *)
+@test :(1\n) == inverse(Number, /)
+@test :(n/1) == inverse(Number, \)
 
 a = Number(5)
 @test a == a + identity(a, +)
@@ -34,7 +40,15 @@ a = Number(5)
 
 
 # logic
-@test 0 == logic(Number, +, identity)
-@test 0 == 5 + logic(5, +, inverse)
+@test zero == logic(Number, +, identity)
+@test one == logic(Number, *, identity)
+@test (-) == logic(Number, +, inverse)
+@test :(1/n) == logic(Number, *, inverse)
 @test eye == logic(Matrix, *, identity)
 @test inv == logic(Matrix, *, inverse)
+@test 0 == logic(5, +, identity)
+@test 1 == logic(5, *, identity)
+@test 0 == 5 + logic(5, +, inverse)
+@test 1 == 5 * logic(5, *, inverse)
+@test [1 0;0 1] == logic([4 7;2 6], *, identity)
+@test_approx_eq [0.6 -0.7;-0.2 0.4] logic([4 7;2 6], *, inverse)
