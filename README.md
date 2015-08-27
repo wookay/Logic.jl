@@ -5,23 +5,29 @@ Windows: [![Build status](https://ci.appveyor.com/api/projects/status/kbx8cnnyaw
 [![Coverage Status](https://coveralls.io/repos/wookay/Logic.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/wookay/Logic.jl?branch=master)
 
 
+# install
+
 ```shell
-~/work/Logic.jl/src master$ julia
+λ ~$ julia
                _
    _       _ _(_)_     |  A fresh approach to technical computing
   (_)     | (_) (_)    |  Documentation: http://docs.julialang.org
    _ _   _| |_  __ _   |  Type "?help" for help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 0.4.0-dev+6941 (2015-08-24 15:52 UTC)
- _/ |\__'_|_|_|\__'_|  |  Commit f0c8239 (0 days old master)
+  | | |_| | | | (_| |  |  Version 0.4.0-dev+7032 (2015-08-27 04:01 UTC)
+ _/ |\__'_|_|_|\__'_|  |  Commit 5d3ccd6 (0 days old master)
 |__/                   |  x86_64-apple-darwin14.5.0
 
-julia> push!(LOAD_PATH, ".")
-3-element Array{ByteString,1}:
- "/Users/wookyoung/work/julia/usr/local/share/julia/site/v0.4"
- "/Users/wookyoung/work/julia/usr/share/julia/site/v0.4"
- "."
+julia> Pkg.clone("git@github.com:wookay/Logic.jl.git")
+INFO: Cloning Logic from git@github.com:wookay/Logic.jl.git
+INFO: Computing changes...
 
+julia> using Logic
+```
+
+
+# examples
+```shell
 julia> using Logic
 
 julia> identity(Number, +)

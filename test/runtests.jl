@@ -1,6 +1,3 @@
-push!(LOAD_PATH, "../src")
-push!(LOAD_PATH, "src")
-
 using Logic
 using Base.Test
 
@@ -37,7 +34,7 @@ a = Number(5)
 
 A = [4 7; 2 6]
 @test A == A * identity(A, *)
-@test_approx_eq [1 0;0 1] A * inverse(A, *)
+@test [1 0;0 1] ≈ A * inverse(A, *)
 @test [1 0 0; 0 1 0; 0 0 1] == identity([3 2 1; 4 3 2; 4 4 3], *)
 
 
@@ -53,4 +50,4 @@ A = [4 7; 2 6]
 @test 0 == 5 + logic(5, +, inverse)
 @test 1 == 5 * logic(5, *, inverse)
 @test [1 0;0 1] == logic([4 7;2 6], *, identity)
-@test_approx_eq [0.6 -0.7;-0.2 0.4] logic([4 7;2 6], *, inverse)
+@test [0.6 -0.7;-0.2 0.4] ≈ logic([4 7;2 6], *, inverse)
